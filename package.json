@@ -1,0 +1,39 @@
+{
+  "name": "esm-runner",
+  "author": "Lloyd Brookes <75pound@gmail.com>",
+  "version": "0.0.0",
+  "description": "esm-runner",
+  "repository": "https://github.com/test-runner-js/esm-runner",
+  "main": "index.mjs",
+  "bin": {
+    "esm-runner": "bin/cli.mjs"
+  },
+  "keywords": [
+    "esm",
+    "test-runner",
+    "test",
+    "runner",
+    "cli",
+    "unit",
+    "testing",
+    "tool",
+    "tape",
+    "tap",
+    "ava",
+    "mocha"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "test": "node --experimental-modules test/test.mjs"
+  },
+  "dependencies": {
+    "test-runner": "^0.6.0-6"
+  },
+  "files": [
+    "index.mjs",
+    "bin"
+  ]
+}
