@@ -1,4 +1,4 @@
-import CliApp from '../'
+import EsmRunnerCli from '../'
 import a from 'assert'
 import { halt } from './lib/util'
 
@@ -8,7 +8,7 @@ import { halt } from './lib/util'
     a.ok(/test-runner/.test(msg))
     counts.push('log')
   }
-  const cli = new CliApp({ errorLog })
+  const cli = new EsmRunnerCli({ errorLog })
   cli.start()
     .then()
     .catch(halt)
@@ -20,7 +20,7 @@ import { halt } from './lib/util'
     a.ok(/test-runner/.test(msg))
     counts.push('log')
   }
-  class TestCliApp extends CliApp {
+  class TestCliApp extends EsmRunnerCli {
     async getOptions () {
       const commandLineArgs = await this.loadModule('command-line-args')
       return commandLineArgs(this.optionDefinitions, { argv: [ '--help' ] })
@@ -33,7 +33,7 @@ import { halt } from './lib/util'
 }
 
 { /* single file run */
-  class TestCliApp extends CliApp {
+  class TestCliApp extends EsmRunnerCli {
     async getOptions () {
       const commandLineArgs = await this.loadModule('command-line-args')
       return commandLineArgs(this.optionDefinitions, { argv: [ 'test/fixture/one.js' ] })
@@ -42,13 +42,13 @@ import { halt } from './lib/util'
   const cli = new TestCliApp()
   cli.start()
     .then(results => {
-      a.deepStrictEqual(results, [ 1, 2 ])
+      a.deepStrictEqual(results, [ undefined, 1, 2 ])
     })
     .catch(halt)
 }
 
 { /* multiple file run */
-  class TestCliApp extends CliApp {
+  class TestCliApp extends EsmRunnerCli {
     async getOptions () {
       const commandLineArgs = await this.loadModule('command-line-args')
       return commandLineArgs(this.optionDefinitions, { argv: [ 'test/fixture/three.js', 'test/fixture/two.js' ] })
@@ -57,13 +57,20 @@ import { halt } from './lib/util'
   const cli = new TestCliApp()
   cli.start()
     .then(results => {
-      a.deepStrictEqual(results, [ 5, 6, 3, 4 ])
+      a.deepStrictEqual(results, [ 
+        undefined,
+        undefined,
+        5,
+        6,
+        undefined,
+        3, 4 
+      ])
     })
     .catch(halt)
 }
 
 { /* multiple file run: only */
-  class TestCliApp extends CliApp {
+  class TestCliApp extends EsmRunnerCli {
     async getOptions () {
       const commandLineArgs = await this.loadModule('command-line-args')
       return commandLineArgs(this.optionDefinitions, { argv: [ 'test/fixture/four.js', 'test/fixture/only.js' ] })
@@ -72,7 +79,7 @@ import { halt } from './lib/util'
   const cli = new TestCliApp()
   cli.start()
     .then(results => {
-      a.deepStrictEqual(results, [ undefined, undefined, undefined, 6 ])
+      a.deepStrictEqual(results, [ undefined, undefined, undefined, undefined, undefined, undefined, 6 ])
     })
     .catch(halt)
 }

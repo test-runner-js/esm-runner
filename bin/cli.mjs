@@ -1,4 +1,4 @@
 #!/usr/bin/env node --experimental-modules
-import CliApp from '../'
-const cli = new CliApp()
+import EsmRunnerCli from '../'
+const cli = new EsmRunnerCli()
 cli.start()
