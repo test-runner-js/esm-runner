@@ -1,6 +1,7 @@
 import EsmRunnerCli from '../'
 import a from 'assert'
 import { halt } from './lib/util'
+import { spawn } from 'child_process'
 
 { /* no args */
   const counts = []
@@ -82,4 +83,12 @@ import { halt } from './lib/util'
       a.deepStrictEqual(results, [ undefined, undefined, undefined, undefined, undefined, undefined, 6 ])
     })
     .catch(halt)
+}
+
+{
+  /* check hashbang is working */
+  const handle = spawn('./bin/cli.mjs', [])
+  handle.on('exit', code => {
+    a.strictEqual(code, 0)
+  })
 }
