@@ -24,13 +24,13 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": ">=6"
+    "node": ">=10"
   },
   "scripts": {
     "test": "node --experimental-modules test/test.mjs"
   },
   "dependencies": {
-    "test-runner": "^0.6.0-10"
+    "test-runner": "^0.6.0-14"
   },
   "files": [
     "index.mjs",

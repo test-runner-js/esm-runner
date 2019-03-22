@@ -37,7 +37,7 @@ import { spawn } from 'child_process'
   class TestCliApp extends EsmRunnerCli {
     async getOptions () {
       const commandLineArgs = await this.loadModule('command-line-args')
-      return commandLineArgs(this.optionDefinitions, { argv: [ 'test/fixture/one.js' ] })
+      return commandLineArgs(this.optionDefinitions, { argv: [ 'test/fixture/mjs/one.mjs' ] })
     }
   }
   const cli = new TestCliApp()
