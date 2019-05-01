@@ -1,4 +1,4 @@
-import Tom from '../../../node_modules/test-object-model/dist/index.mjs'
+import Tom from 'test-object-model'
 
 const tom = new Tom('Fixture one')
 tom.test('one', () => 1)
