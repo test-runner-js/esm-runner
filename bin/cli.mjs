@@ -3,4 +3,7 @@
 
 import EsmRunnerCli from '../index.mjs'
 const cli = new EsmRunnerCli()
-cli.start()
+cli.start().catch(err => {
+  console.error(err)
+  process.exitCode = 1
+})
