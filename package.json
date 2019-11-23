@@ -27,7 +27,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "test": "node --experimental-modules test/test.mjs"
+    "test": "node --experimental-modules test/test.mjs && node --experimental-modules test/esm-cli.mjs"
   },
   "dependencies": {
     "test-runner": "^0.8.3"
