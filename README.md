@@ -6,9 +6,11 @@
 
 # esm-runner
 
-A specialisation of [test-runner](https://github.com/test-runner-js/test-runner) for testing ECMAScript modules. It is functionally identically to test-runner with one exception: it accepts ESM files (typically with the extension `.mjs`) as input. Requires Node.js v10.
+A specialisation of [test-runner](https://github.com/test-runner-js/test-runner) for testing ECMAScript modules.
 
-Please see the [test-runner readme](https://github.com/test-runner-js/test-runner) and [wiki](https://github.com/test-runner-js/test-runner/wiki).
+This tool is functionally identically to [test-runner](https://github.com/test-runner-js/test-runner) with one exception: it accepts ESM files (typically with the extension `.mjs`) as input.
+
+Please see the [test-runner readme](https://github.com/test-runner-js/test-runner) and [wiki](https://github.com/test-runner-js/test-runner/wiki) for documentation.
 
 * * *
 
